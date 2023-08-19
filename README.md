@@ -16,7 +16,7 @@ However, through spaced repetition (reviewing information at increasing interval
 To reinforce learning and expand one's knowledge, building projects of increasing difficulty is a great option. This approach helps in revisiting core concepts (spaced repetition) and introduces new concepts gradually.
 
 One doesn't need to know everything about a programming language to be proficient. All languages here will build the following projects:
-- Tic Tak Toe
+- Tic Tac Toe
 - Class Scheduler
 - DFS/BFS Visualizer (depth/breath first search)
 - IoT Parking System
