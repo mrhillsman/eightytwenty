@@ -1,32 +1,40 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
   <head>
     <title>Tic Tac Toe Game</title>
     <script src="https://unpkg.com/htmx.org/dist/htmx.js"></script>
-    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
   </head>
   <body>
-      <div id="content" class="app-wrapper">
-        <div id="players" class="app-section">
-          <div id="o-player">O</div>
-          <div id="x-player">X</div>
+      <div id="content" class="flex flex-col items-center text-[84px]">
+        <div id="players" class="flex flex-row mb-[100px] justify-between text-center w-[300px]">
+          <div id="o-player" class="w-[100px] border-b-2 border-black">O</div>
+          <div id="x-player" class="w-[100px]">X</div>
         </div>
-        <div id="gameboard" class="app-section">
-            <div id="gbr1" class="gbrow">
-                <div id="gbr1c1" class="gbcell bbr" data-hx-trigger="click">X</div>
-                <div id="gbr1c2" class="gbcell" data-hx-trigger="click">O</div>
-                <div id="gbr1c3" class="gbcell bbl" data-hx-trigger="click"></div>
+        <div id="gameboard" class="flex flex-row justify-between text-center w-[600px]">
+            <div id="gbc1" class="flex flex-col flex-nowrap">
+                <div id="gbc1r1" class="w-[200px] h-[130px] border-b-2 border-r-2 border-black"></div>
+                <div id="gbc1r2" class="w-[200px] h-[130px] border-b-2 border-r-2 border-black"></div>
+                <div id="gbc1r3" class="w-[200px] h-[130px] border-r-2 border-black"></div>
             </div>
-            <div id="gbr2" class="gbrow">
-                <div id="gbr2c1" class="gbcell bbr" data-hx-trigger="click"></div>
-                <div id="gbr2c2" class="gbcell bbt" data-hx-trigger="click"></div>
-                <div id="gbr2c3" class="gbcell bbl" data-hx-trigger="click"></div>
+            <div id="gbc2" class="flex flex-col flex-nowrap">
+                <div id="gbc2r1" class="w-[200px] h-[130px] border-b-2 border-r-2 border-black"></div>
+                <div id="gbc2r2" class="w-[200px] h-[130px] border-b-2 border-r-2 border-black"></div>
+                <div id="gbc2r3" class="w-[200px] h-[130px] border-r-2 border-black"></div>
             </div>
-            <div id="gbr3" class="gbrow">
-                <div id="gbr3c1" class="gbcell br" data-hx-trigger="click"></div>
-                <div id="gbr3c2" class="gbcell" data-hx-trigger="click"></div>
-                <div id="gbr3c3" class="gbcell bl" data-hx-trigger="click"></div>
+            <div id="gbc3" class="flex flex-col">
+                <div id="gbc3r1" class="w-[200px] h-[130px] border-b-2 border-black"></div>
+                <div id="gbc3r2" class="w-[200px] h-[130px] border-b-2 border-black"></div>
+                <div id="gbc3r3" class="w-[200px] h-[130px]"></div>
             </div>
         </div>
+          <div id="game-meta flex flex-col items-center w-[300px] h-[300px]">
+            <div id="game-winner" class="mt-[100px] text-[36px] text-center">...</div>
+            <div id="controls" class="flex flex-row justify-between w-[300px] mt-[30px]">
+                <button id="start-game" class="bg-transparent hover:bg-black text-black font-semibold hover:text-white py-2 px-4 border border-black hover:border-transparent rounded text-[18px]">Start Game</button>
+                <button id="reset-game" class="bg-transparent hover:bg-black text-black font-semibold hover:text-white py-2 px-4 border border-black hover:border-transparent rounded text-[18px] cursor-not-allowed">Reset Game</button>
+            </div>
+          </div>
       </div>
       <script src="js/tic-tac-toe.js"></script>
   </body>
