@@ -4,9 +4,9 @@ See [tictactoe.drawio](tictactoe.drawio) for wireframe
 
 HTML/CSS ([htmx](https://htmx.org)+[tailwind css](https://tailwindcss.com))
 - [x] Create a tic-tac-toe board
-- [ ] Create a button to start a new game
-- [ ] Create a button to reset the game
-- [ ] Create text to display the winner or draw
+- [x] Create a button to start a new game
+- [x] Create a button to reset the game
+- [x] Create text to display the winner or draw
 
 JavaScript
 - [x] Randomly select a player (symbol) to go first
