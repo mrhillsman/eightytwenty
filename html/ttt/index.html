@@ -5,28 +5,29 @@
     <link rel="stylesheet" type="text/css" href="css/style.css">
   </head>
   <body>
-      <div id="content">
-        <div id="players">
+      <div id="content" class="app-wrapper">
+        <div id="players" class="app-section">
           <div id="o-player">O</div>
           <div id="x-player">X</div>
         </div>
-        <div id="gameboard">
-            <div id="gbr1">
-                <div id="gbr1c1"></div>
-                <div id="gbr1c2"></div>
-                <div id="gbr1c3"></div>
+        <div id="gameboard" class="app-section">
+            <div id="gbr1" class="gbrow">
+                <div id="gbr1c1" class="gbcell bbr" data-hx-trigger="click">X</div>
+                <div id="gbr1c2" class="gbcell" data-hx-trigger="click">O</div>
+                <div id="gbr1c3" class="gbcell bbl" data-hx-trigger="click"></div>
             </div>
-            <div id="gbr2">
-                <div id="gbr2c1"></div>
-                <div id="gbr2c2"></div>
-                <div id="gbr2c3"></div>
+            <div id="gbr2" class="gbrow">
+                <div id="gbr2c1" class="gbcell bbr" data-hx-trigger="click"></div>
+                <div id="gbr2c2" class="gbcell bbt" data-hx-trigger="click"></div>
+                <div id="gbr2c3" class="gbcell bbl" data-hx-trigger="click"></div>
             </div>
-            <div id="gbr3">
-                <div id="gbr3c1"></div>
-                <div id="gbr3c2"></div>
-                <div id="gbr3c3"></div>
+            <div id="gbr3" class="gbrow">
+                <div id="gbr3c1" class="gbcell br" data-hx-trigger="click"></div>
+                <div id="gbr3c2" class="gbcell" data-hx-trigger="click"></div>
+                <div id="gbr3c3" class="gbcell bl" data-hx-trigger="click"></div>
             </div>
         </div>
       </div>
+      <script src="js/tic-tac-toe.js"></script>
   </body>
 </html>
