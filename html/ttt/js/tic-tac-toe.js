@@ -83,24 +83,72 @@ function update_gameboard(e) {
         if (move_count === 9) {
             game_over = true;
             tie = true;
-            return;
+            document.getElementById('game-status').innerHTML = "Tie Game";
         }
 
         check_for_winner();
+
+        if (winner === "X" || winner === "O") {
+            game_over = true;
+            document.getElementById('game-status').innerHTML = `${winner} Wins!`;
+        }
     }
 }
 
 function check_for_winner() {
+    rows = [[gbc1r1, gbc2r1, gbc3r1], [gbc1r2, gbc2r2, gbc3r2], [gbc1r3, gbc2r3, gbc3r3]];
+    columns = [[gbc1r1, gbc1r2, gbc1r3], [gbc2r1, gbc2r2, gbc2r3], [gbc3r1, gbc3r2, gbc3r3]];
+    diagonals = [[gbc1r1, gbc2r2, gbc3r3], [gbc1r3, gbc2r2, gbc3r1]];
     function check_rows() {
-
+        for (let row of rows) {
+            if (row[0].innerHTML === row[1].innerHTML && row[1].innerHTML === row[2].innerHTML) {
+                if (row[0].innerHTML === "X") {
+                    winner = "X";
+                    game_over = true;
+                    return;
+                } else if (row[0].innerHTML === "O") {
+                    winner = "O";
+                    game_over = true;
+                    return;
+                }
+            }
+        }
     }
     function check_columns() {
-
+        for (let column of columns) {
+            if (column[0].innerHTML === column[1].innerHTML && column[1].innerHTML === column[2].innerHTML) {
+                if (column[0].innerHTML === "X") {
+                    winner = "X";
+                    game_over = true;
+                    return;
+                } else if (column[0].innerHTML === "O") {
+                    winner = "O";
+                    game_over = true;
+                    return;
+                }
+            }
+        }
     }
 
     function check_diagonals() {
-
+        for (let diagonal of diagonals) {
+            if (diagonal[0].innerHTML === diagonal[1].innerHTML && diagonal[1].innerHTML === diagonal[2].innerHTML) {
+                if (diagonal[0].innerHTML === "X") {
+                    winner = "X";
+                    game_over = true;
+                    return;
+                } else if (diagonal[0].innerHTML === "O") {
+                    winner = "O";
+                    game_over = true;
+                    return;
+                }
+            }
+        }
     }
+
+    check_rows();
+    check_columns();
+    check_diagonals();
 }
 
 document.getElementById('gameboard').addEventListener('click', update_gameboard);
