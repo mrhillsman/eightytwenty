@@ -1,56 +1,108 @@
-// Check if current_player is already set
-// If not, set current_player to either "X" or "O" randomly
-function set_current_player() {
-    let current_player = "";
-    Math.random() < 0.5 ? current_player = "X" : current_player = "O";
-    return current_player;
-}
+let current_player, symbol, game_over, winner, tie, move_count, game_started
 
-function start_new_game() {
-
-}
-
-function check_for_winner_or_tie() {
-
-    return [false, "", false];
-}
-
-function switch_players(current_player) {
-    // Change current_player to X if it is O otherwise change it to O
-    if (current_player === "X") {
-        return "O";
-    }
-
-    return "X";
-}
-
-function place_symbol(current_player, square) {
-    // Place current_player symbol in square
-    document.getElementById(square).innerHTML = current_player;
-}
-
-function run() {
-    let current_player = set_current_player();
-    let game_over = false;
-    let winner = "";
-    let tie = false;
-
-    document.getElementById('gameboard').addEventListener('click', function(e) {
-        if(document.getElementById(e.target.id).innerHTML === '') {
-            place_symbol(current_player, e.target.id);
-            switch_players(current_player);
+function reset_gameboard() {
+    let columns = document.getElementById('gameboard').children;
+    for (let squares of columns) {
+        for (let square of squares.children) {
+            square.innerHTML = "";
         }
-    });
-
-    while (!game_over) {
-        [game_over, winner, tie] = check_for_winner_or_tie();
-    }
-
-    if (tie) {
-        console.log("It's a tie!");
-    } else {
-        console.log("Player " + winner + " wins!");
     }
 }
 
-// run();
+function initiate_game() {
+    current_player = "";
+    symbol = "";
+    game_over = false;
+    winner = "";
+    tie = false;
+    move_count = 0;
+    game_started = false;
+
+    reset_gameboard();
+
+    Math.random() < 0.5 ? symbol = "X" : symbol = "O";
+    if (symbol === "X") {
+        current_player = "x-player";
+    } else {
+        current_player = "o-player";
+    }
+
+    let players = document.getElementById('players').children;
+    for (let player of players) {
+        if (player.id === current_player) {
+            player.setAttribute('class', 'border-b-2 border-black active');
+        } else {
+            player.setAttribute('class', '')
+        }
+    }
+}
+
+function switch_player() {
+    document.getElementById(current_player).setAttribute('class', '');
+
+    if (current_player === "x-player") {
+        current_player = "o-player";
+        symbol = "O";
+    } else {
+        current_player = "x-player";
+        symbol = "X";
+    }
+
+    document.getElementById(current_player).setAttribute('class', 'border-b-2 border-black active');
+}
+
+function place_symbol(square) {
+    document.getElementById(square).innerHTML = symbol;
+}
+
+function start_game() {
+    initiate_game();
+    game_started = true;
+    document.getElementById('game-status').innerHTML = "Game Started";
+    document.getElementById('reset-game').removeAttribute('disabled');
+    document.getElementById('reset-game').addEventListener('click', reset_game);
+}
+
+function reset_game() {
+    initiate_game();
+    for (let player of document.getElementById('players').children) {
+        player.setAttribute('class', '');
+    }
+    document.getElementById('game-status').innerHTML = "Press Start Game Again";
+}
+
+function update_gameboard(e) {
+    if (!game_started || game_over) {
+        return;
+    }
+
+    if (document.getElementById(e.target.id).innerHTML === '') {
+        place_symbol(e.target.id);
+        switch_player();
+        move_count++;
+        if (move_count === 9) {
+            game_over = true;
+            tie = true;
+            return;
+        }
+
+        check_for_winner();
+    }
+}
+
+function check_for_winner() {
+    function check_rows() {
+
+    }
+    function check_columns() {
+
+    }
+
+    function check_diagonals() {
+
+    }
+}
+
+document.getElementById('gameboard').addEventListener('click', update_gameboard);
+
+document.getElementById('start-game').addEventListener('click', start_game);
