@@ -10,8 +10,9 @@ HTML/CSS ([htmx](https://htmx.org)+[tailwind css](https://tailwindcss.com))
 
 JavaScript
 - [x] Randomly select a player (symbol) to go first
-- [ ] Underscore the current player (symbol)
-- [ ] Allow players to click on a square to place their symbol
-- [ ] Display a message when a player wins
-- [ ] Display a message when the game is a draw
-- [ ] Allow players to start a new game
+- [x] Underscore the current player (symbol)
+- [x] Allow players to click on a square to place their symbol
+- [x] Display a message when a player wins
+- [x] Display a message when the game is a draw
+- [x] Allow players to start a new game
+- [x] Allow players to reset the game
