@@ -1,4 +1,31 @@
 from tkinter import *
+
+
+def create_grid(event=None):
+    w = c.winfo_width() # Get current width of canvas
+    h = c.winfo_height() # Get current height of canvas
+    c.delete('grid_line') # Will only remove the grid_line
+
+    # Creates all vertical lines at intevals of 100
+    for i in range(0, w, 120):
+        c.create_line([(i, 0), (i, h)], tag='grid_line')
+
+    # Creates all horizontal lines at intevals of 100
+    for i in range(0, h, 120):
+        c.create_line([(0, i), (w, i)], tag='grid_line')
+
+
+root = Tk()
+
+c = Canvas(root, height=960, width=960, bg='white')
+c.pack(fill=BOTH, expand=True)
+
+c.bind('<Configure>', create_grid)
+
+root.mainloop()
+
+'''
+from tkinter import *
 from tkinter import ttk
 
 def calculate(*args):
@@ -36,3 +63,5 @@ feet_entry.focus()
 root.bind("<Return>", calculate)
 
 root.mainloop()
+'''
+
