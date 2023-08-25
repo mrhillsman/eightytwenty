@@ -84,6 +84,7 @@ function update_gameboard(e) {
             game_over = true;
             tie = true;
             document.getElementById('game-status').innerHTML = "Tie Game";
+            return;
         }
 
         check_for_winner();
